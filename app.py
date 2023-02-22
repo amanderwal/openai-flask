@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 import openai
-
+import os
 app = Flask(__name__)
 # Set up the OpenAI API credentials
-openai.api_key = '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'
+openai.api_key = os.environ['API']
 
 # Define the route for generating bot responses
 @app.route('/api/bot', methods=['POST'])
