@@ -8,7 +8,9 @@ openai.api_key = os.environ['API']
 # Define the route for generating bot responses
 @app.route('/api/bot', methods=['POST'])
 def generate_response():
+    print(os.environ['API'])
     user_input = request.json['input']
+    print(user_input)
     # return jsonify({'response': 'message'})
     model_engine = "text-davinci-003"
     prompt = (f"{user_input}")
@@ -23,6 +25,7 @@ def generate_response():
     )
 
     message = completions.choices[0].text
+    print(message)
     # print(message)
     return jsonify({'response': message})
 
